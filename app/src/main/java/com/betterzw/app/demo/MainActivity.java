@@ -1,43 +1,41 @@
 package com.betterzw.app.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.Button;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private Toolbar toolbar;
-    private TextView toolbarTitle;
+    @Bind(R.id.start_transition)
+    Button startTransition;
+
+    @Bind(R.id.start_app_bar)
+    Button startAppBar;
+
+    @OnClick(R.id.start_transition) void onStartTransition(){
+        startActivity(new Intent(this, TransitionsActivity.class));
+    }
+
+    @OnClick(R.id.start_app_bar) void onStartAppBar(){
+        startActivity(new Intent(this, AppBarLayoutActivity.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
-        toolbarTitle = (TextView)findViewById(R.id.toolbar_title);
-
-
-        setupToolbar();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ButterKnife.bind(this);
     }
 
-    protected void setupToolbar() {
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            toolbarTitle.setText(getTitle());
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

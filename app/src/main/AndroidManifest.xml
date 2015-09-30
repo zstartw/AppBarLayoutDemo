@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".TransitionsActivity"/>
+        <activity android:name=".AppBarLayoutActivity"/>
+        <activity android:name=".TransitionsActivityTwo"/>
+
     </application>
 
 </manifest>
